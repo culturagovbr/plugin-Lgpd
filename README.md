@@ -1,19 +1,17 @@
 # Plugin LGPD
 
-Plugin para implementação da Lei Geral de Proteção de Dados (LGPD) no Mapas Culturais.
+Plugin para implementação de termos customizados
 
 ## Descrição
 
-Este plugin gerencia os termos de uso, política de privacidade e autorização de uso de imagem conforme exigido pela LGPD. Ele força os usuários a aceitar os termos antes de acessar o sistema.
+Este plugin gerencia os termos de uso, política de privacidade e autorização de uso de imagem conforme exigido pela LGPD.
 
 ## Funcionalidades
 
 - **Termos de Uso**: Exibe e gerencia aceitação dos termos e condições
 - **Política de Privacidade**: Exibe e gerencia aceitação da política de privacidade  
 - **Autorização de Uso de Imagem**: Exibe e gerencia autorização para uso de imagens
-- **Controle de Aceitação**: Verifica se o usuário aceitou todos os termos necessários
-- **Redirecionamento**: Redireciona usuários não autenticados para aceitar os termos
-
+- 
 ## Estrutura de Arquivos
 
 ```
