@@ -9,13 +9,13 @@ Este plugin gerencia os termos de uso, política de privacidade e autorização 
 ## Funcionalidades
 
 - **Termos de Uso**: Exibe e gerencia aceitação dos termos e condições
-- **Política de Privacidade**: Exibe e gerencia aceitação da política de privacidade  
+- **Política de Privacidade**: Exibe e gerencia aceitação da política de privacidade
 - **Autorização de Uso de Imagem**: Exibe e gerencia autorização para uso de imagens
-- 
+
 ## Estrutura de Arquivos
 
 ```
-src/plugins/Lgpd/
+plugins/Lgpd/
 ├── Plugin.php                    # Classe principal do plugin
 ├── README.md                     # Este arquivo
 └── config/
@@ -29,47 +29,45 @@ src/plugins/Lgpd/
 
 ### 1. Ativação do Plugin
 
-O plugin deve estar listado em `dev/config.d/plugins.php`:
+O plugin deve estar listado em `docker/common/config.d/plugins.php`:
 
 ```php
 return [
     'plugins' => [
-        .
-        .
-        .
-        'Lgpd',  // <- Plugin LGPD
+        // ...
+        'Lgpd',
     ]
 ];
 ```
 
 ### 2. Configuração Padrão
 
-O plugin carrega automaticamente a configuração padrão:
+O plugin carrega automaticamente os termos dos arquivos HTML em `config/lgpd-terms/`. A config é setada no constructor e disponibilizada em `$app->config['module.LGPD']`:
 
 ```php
-'module.LGPD' => [
+$app->config['module.LGPD'] = [
     'termsOfUsage' => [
-        'title' => 'Termos e Condições de Uso',
-        'text' => file_get_contents(__DIR__ . '/config/lgpd-terms/terms-of-usage.html'),
-        'buttonText' => 'Aceito os termos e condições de uso'
+        'title'      => 'Termos e Condições de Uso',
+        'text'       => '...',
+        'buttonText' => 'Aceito os termos e condições de uso',
     ],
     'privacyPolicy' => [
-        'title' => 'Política de Privacidade',
-        'text' => file_get_contents(__DIR__ . '/config/lgpd-terms/privacy-policy.html'),
-        'buttonText' => 'Aceito a política de privacidade'
+        'title'      => 'Política de Privacidade',
+        'text'       => '...',
+        'buttonText' => 'Aceito a política de privacidade',
     ],
     'termsUse' => [
-        'title' => 'Autorização de Uso de Imagem',
-        'text' => file_get_contents(__DIR__ . '/config/lgpd-terms/images-use.html'),
-        'buttonText' => 'Autorizo o uso de imagem'
+        'title'      => 'Autorização de Uso de Imagem',
+        'text'       => '...',
+        'buttonText' => 'Autorizo o uso de imagem',
     ],
-]
+];
 ```
 
 ### 3. Personalização dos Termos
 
 Para personalizar os termos, edite os arquivos HTML em `config/lgpd-terms/`:
 
-- `terms-of-usage.html` - Termos e condições de uso
-- `privacy-policy.html` - Política de privacidade  
-- `images-use.html` - Autorização de uso de imagem
+- `terms-of-usage.html` — Termos e condições de uso
+- `privacy-policy.html` — Política de privacidade
+- `images-use.html` — Autorização de uso de imagem
